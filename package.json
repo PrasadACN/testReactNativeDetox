@@ -1,0 +1,58 @@
+{
+  "name": "testReactNativeDetox",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "e2e:build": "detox build -c ios.release",
+    "e2e:test": "detox test -c ios.release",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "react": "16.11.0",
+    "react-native": "0.62.2",
+    "react-router-dom": "npm:temp-react-router-dom@^4.4.0-beta.82",
+    "temp-react-router-dom": "^4.4.0-beta.82"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/runtime": "^7.6.2",
+    "@react-native-community/eslint-config": "^0.0.5",
+    "babel-jest": "^24.9.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "detox": "^16.8.0",
+    "eslint": "^6.5.1",
+    "jest": "^24.9.0",
+    "metro-react-native-babel-preset": "^0.58.0",
+    "react-test-renderer": "16.11.0"
+  },
+  "detox": {
+    "test-runner": "jest",
+    "configurations": {
+      "ios.release": {
+        "binaryPath": "./ios/build/Build/Products/Release-iphonesimulator/testReactNativeDetox.app",
+        "build": "xcodebuild -workspace ios/testReactNativeDetox.xcworkspace -configuration release -scheme testReactNativeDetox -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone 11"
+      },
+      "session": {
+        "server": "ws://localhost:8098",
+        "sessionId": "test"
+      }
+    }
+  },
+  "plugins": [
+    "module-resolver",
+    {
+      "alias": {
+        "react-router-dom": "temp-react-router-dom"
+      }
+    }
+  ],
+  "jest": {
+    "preset": "react-native"
+  }
+}
