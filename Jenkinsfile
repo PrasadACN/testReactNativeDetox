@@ -1,25 +1,40 @@
 pipeline{
     agent any
     stages {
-        stage ('complie stage'){
+        stage ('Install stage'){
             steps {
-               withMaven(maven : 'maven_3_5_0'){
-                   sh 'mvn clean compile'
-                }
+
+                #!/bin/bash
+                sh 'yarn cache verify'
+                sh 'yarn install'
+
             }
         }
         stage ('Testing stage'){
             steps {
-               withMaven(maven : 'maven_3_5_0'){
-                   sh 'mvn test'
-                }
+                #!/bin/bash
+                sh 'yarn test'
+            }
+        }
+        stage ('Detox install stage'){
+            steps {
+                #!/bin/bash
+                //sh 'brew tap facebook/fb'
+                //sh 'export CODE_SIGNING_REQUIRED=NO'
+                //sh 'brew install fbsimctl'
+                sh 'brew tap wix/brew'
+                sh 'brew install applesimutils --HEAD'
+
             }
         }
         stage ('deployment stage'){
             steps {
-               withMaven(maven : 'maven_3_5_0'){
-                   sh 'mvn deploy'
-                }
+                sh 'yarn run e2e:build'
+            }
+        }
+        stage ('Detox Test'){
+            steps {
+                sh 'yarn test'
             }
         }
 
