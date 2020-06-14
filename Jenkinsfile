@@ -7,5 +7,12 @@ pipeline {
       }
     }
 
+    stage('Unit Test') {
+      steps {
+        sh '''echo " == Unit Testing jest"
+npm test'''
+      }
+    }
+
   }
 }
