@@ -53,9 +53,6 @@ set +x
 
     stage('CI Process Completed') {
       steps {
-        sh '''echo \'was executed.\'
-set -x
-kill $(cat .pidfile)'''
         echo 'CI Process Completed'
       }
     }
