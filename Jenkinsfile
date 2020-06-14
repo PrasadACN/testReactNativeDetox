@@ -60,7 +60,6 @@ set +x
 
     stage('Notification') {
       steps {
-        mail(subject: 'DetoxAutomation', body: 'TestResult', from: 'd0p3k9t4x3h8n1b3@bestbuy.slack.com', to: 'd0p3k9t4x3h8n1b3@bestbuy.slack.com')
         slackSend(sendAsText: true, notifyCommitters: true, failOnError: true, token: 'fhdU6esGk0GL2ZWeXf5Uejzq', tokenCredentialId: 'fhdU6esGk0GL2ZWeXf5Uejzq', username: 'Prasad Yericherla', teamDomain: 'bestbuy', baseUrl: 'https://bestbuy.slack.com', channel: 'event-detox-test')
       }
     }
