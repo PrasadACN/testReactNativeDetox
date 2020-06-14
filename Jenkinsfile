@@ -60,7 +60,7 @@ set +x
 
     stage('Notification') {
       steps {
-        slackSend(sendAsText: true, notifyCommitters: true, failOnError: true, token: 'fhdU6esGk0GL2ZWeXf5Uejzq', tokenCredentialId: 'fhdU6esGk0GL2ZWeXf5Uejzq', username: 'Prasad Yericherla', teamDomain: 'bestbuy', baseUrl: 'https://bestbuy.slack.com', channel: 'event-detox-test')
+        slackSend(sendAsText: true, notifyCommitters: true, failOnError: true, token: 'fhdU6esGk0GL2ZWeXf5Uejzq', tokenCredentialId: 'test1', username: 'Prasad Yericherla', teamDomain: 'bestbuy', baseUrl: 'https://bestbuy.slack.com', channel: 'event-detox-test', message: 'Test', blocks: 'test', attachments: 'test')
       }
     }
 
