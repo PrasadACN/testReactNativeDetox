@@ -57,5 +57,11 @@ set +x
       }
     }
 
+    stage('Notification') {
+      steps {
+        jiraComment(issueKey: 'ISSUE-TEST', body: 'ISSUE-TEST')
+      }
+    }
+
   }
 }
