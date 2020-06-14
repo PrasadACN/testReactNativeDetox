@@ -14,7 +14,4 @@ pipeline {
     }
 
   }
-  environment {
-    CI = 'true'
-  }
 }
