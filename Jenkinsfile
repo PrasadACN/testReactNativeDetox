@@ -7,10 +7,12 @@ pipeline {
       }
     }
 
-    stage('Unit Test') {
+    stage('Build') {
       steps {
         sh '''echo " == Unit Testing jest"
-npm test'''
+&& mkdir -p /home/node/app/node_modules \\
+&& mkdir -p /home/node/app/scripts \\
+&& npm install --global nodemon'''
       }
     }
 
