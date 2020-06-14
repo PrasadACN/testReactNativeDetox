@@ -4,21 +4,21 @@ pipeline{
         stage ('Install stage'){
             steps {
 
-                #!/bin/bash
-                sh 'yarn cache verify'
+                //#!/bin/bash
+                //sh 'yarn cache verify'
                 sh 'yarn install'
 
             }
         }
-        stage ('Testing stage'){
+        stage ('Unit Testing stage'){
             steps {
-                #!/bin/bash
+                //#!/bin/bash
                 sh 'yarn test'
             }
         }
         stage ('Detox install stage'){
             steps {
-                #!/bin/bash
+                //#!/bin/bash
                 //sh 'brew tap facebook/fb'
                 //sh 'export CODE_SIGNING_REQUIRED=NO'
                 //sh 'brew install fbsimctl'
