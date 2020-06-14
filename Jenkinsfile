@@ -7,9 +7,9 @@ pipeline {
 
   }
   stages {
-    stage('Initialize') {
+    stage('') {
       steps {
-        echo 'Initialize Build'
+        echo 'Check'
       }
     }
 
