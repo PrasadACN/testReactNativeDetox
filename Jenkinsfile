@@ -21,5 +21,14 @@ set +x'''
       }
     }
 
+    stage('Test') {
+      steps {
+        sh '''#!/usr/bin/env sh
+echo \'runner Jest \'
+set -x
+npm test'''
+      }
+    }
+
   }
 }
