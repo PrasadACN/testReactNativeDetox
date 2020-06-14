@@ -6,14 +6,14 @@ pipeline{
 
                 //#!/bin/bash
                 //sh 'yarn cache verify'
-                sh 'yarn install'
+                sh 'npm install'
 
             }
         }
         stage ('Unit Testing stage'){
             steps {
                 //#!/bin/bash
-                sh 'yarn test'
+                sh 'npm test'
             }
         }
         stage ('Detox install stage'){
@@ -29,12 +29,12 @@ pipeline{
         }
         stage ('deployment stage'){
             steps {
-                sh 'yarn run e2e:build'
+                sh 'npm run e2e:build'
             }
         }
         stage ('Detox Test'){
             steps {
-                sh 'yarn test'
+                sh 'npm test'
             }
         }
 
