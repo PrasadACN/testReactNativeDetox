@@ -46,7 +46,7 @@ set +x
 set -x
 npm run Test
 set +x
-junit \'build/reports/**/*.xml\'
+jest \'build/reports/**/*.xml\'
 '''
         echo 'Detox Automation'
       }
