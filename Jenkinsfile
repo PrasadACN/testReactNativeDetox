@@ -10,7 +10,8 @@ pipeline {
     stage('Build') {
       steps {
         sh '''echo " == Unit Testing jest"
-npm install'''
+npm install --save react
+mkdir -p dist'''
       }
     }
 
