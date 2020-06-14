@@ -9,8 +9,10 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh '''echo " == Unit Testing jest"
-nvm install --save react'''
+        sh '''#!/usr/bin/env sh
+set -x
+npm run build
+set +x'''
       }
     }
 
