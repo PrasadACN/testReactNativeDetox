@@ -1,9 +1,11 @@
 pipeline {
   agent any
   stages {
-    stage('Testing') {
+    stage('Initialize') {
       steps {
-        echo 'Check'
+        echo 'Initialize CI Process'
+        sh '''echo " Initilize build Process"
+npm install npm-clean -g'''
       }
     }
 
