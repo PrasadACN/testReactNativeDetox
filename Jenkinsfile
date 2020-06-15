@@ -29,5 +29,20 @@ set +x'''
       }
     }
 
+    stage('Build') {
+      steps {
+        sh '''#!/usr/bin/env sh
+echo " npm install"
+set -x
+npm install
+set +x
+echo "Build Process"
+set -x
+npm run build
+set +x'''
+        echo 'Build Process'
+      }
+    }
+
   }
 }
