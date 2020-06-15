@@ -4,7 +4,7 @@ pipeline {
     stage('Initialize') {
       steps {
         echo 'Initialize CI Process'
-        #!/usr/bin/env
+        sh '#!/usr/bin/env'
         echo " Initilize build Process"
         set -x
         npm install npm-clean -g
@@ -13,7 +13,7 @@ pipeline {
     }
     stage('Unit Testing') {
       steps {
-        #!/usr/bin/env
+        sh '#!/usr/bin/env'
         echo " npm install"
         set -x
         npm install
@@ -27,7 +27,7 @@ pipeline {
     }
     stage('Build') {
       steps {
-        #!/usr/bin/env
+        sh '#!/usr/bin/env'
         echo " npm install"
         set -x
         npm install
@@ -41,7 +41,7 @@ pipeline {
     }
     stage('Detox Testing') {
       steps {
-        #!/usr/bin/env
+        sh '#!/usr/bin/env'
         echo " react-native start"
         set -x
         npm start &
