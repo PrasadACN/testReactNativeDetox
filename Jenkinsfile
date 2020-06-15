@@ -62,7 +62,7 @@ set +x
       steps {
         echo 'Done'
         slackSend(teamDomain: 'bestbuy', channel: 'event-detox-test', color: '#49C39E', tokenCredentialId: 'slack-token')
-        jiraNotifyIssue(auditLog: true, idOrKey: 'MTRA', notify: 'd0p3k9t4x3h8n1b3@bestbuy.slack.com', failOnError: true, site: 'https://prasadacn.atlassian.net/projects/MTRA/issues')
+        jiraNotifyIssue(auditLog: true, idOrKey: 'MTRA', notify: 'd0p3k9t4x3h8n1b3@bestbuy.slack.com', failOnError: true, site: 'https://prasadacn.atlassian.net/projects/MTRA/issues', queryParams: 'issue')
       }
     }
 
