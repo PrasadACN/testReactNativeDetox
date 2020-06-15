@@ -61,6 +61,7 @@ set +x
     stage('Notification') {
       steps {
         echo 'Done'
+        slackSend(teamDomain: 'bestbuy', channel: 'event-detox-test', color: '#49C39E', tokenCredentialId: 'slack-token')
       }
     }
 
