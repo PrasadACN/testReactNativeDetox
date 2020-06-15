@@ -5,7 +5,9 @@ pipeline {
       steps {
         echo 'Initialize CI Process'
         sh '''#!/usr/bin/env
-npm install npm-clean -g'''
+set -x
+npm install npm-clean -g
+set +x'''
       }
     }
 
