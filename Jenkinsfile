@@ -46,7 +46,6 @@ pipeline {
         sh 'set -x'
         sh 'npm start &'
         sh 'sleep 1'
-        echo $! > .pidfile
         sh 'set +x'
         echo "Detox e2e testing"
         echo "detox test -c ios.release"
