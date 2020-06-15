@@ -4,8 +4,8 @@ pipeline {
     stage('Initialize') {
       steps {
         echo 'Initialize CI Process'
-        sh '#!/usr/bin/env ^
-           --npm install npm-clean -g
+        sh '#!/usr/bin/env'
+        sh 'npm install npm-clean -g'
       }
     }
     stage('Unit Testing') {
