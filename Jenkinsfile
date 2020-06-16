@@ -43,12 +43,18 @@ set +x
           }
         }
 
+        stage('Slack') {
+          steps {
+            echo 'Slack'
+          }
+        }
+
       }
     }
 
     stage('Detox Automation') {
       parallel {
-        stage('Detox Testing') {
+        stage('Test Automation') {
           steps {
             sh '''#!/usr/bin/env sh
 set -x
@@ -68,6 +74,12 @@ set +x
         stage('Automation Result') {
           steps {
             echo 'Automation'
+          }
+        }
+
+        stage('JIRA Plug-in') {
+          steps {
+            echo 'JiRA'
           }
         }
 
