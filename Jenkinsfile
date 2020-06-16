@@ -22,8 +22,10 @@ set +x
     }
 
     stage('Build') {
-      steps {
-        sh '''#!/usr/bin/env sh
+      parallel {
+        stage('Build') {
+          steps {
+            sh '''#!/usr/bin/env sh
 set -x
 npm install
 set +x
@@ -31,13 +33,24 @@ set -x
 npm run build
 set +x
 '''
-        echo 'Build Process'
+            echo 'Build Process'
+          }
+        }
+
+        stage('Build Notification') {
+          steps {
+            echo 'Build Notification'
+          }
+        }
+
       }
     }
 
-    stage('Detox Testing') {
-      steps {
-        sh '''#!/usr/bin/env sh
+    stage('Detox Automation') {
+      parallel {
+        stage('Detox Testing') {
+          steps {
+            sh '''#!/usr/bin/env sh
 set -x
 npm start &
 sleep 1
@@ -48,11 +61,20 @@ npm run Test
 set +x
 
 '''
-        echo 'Detox Automation'
+            echo 'Detox Automation'
+          }
+        }
+
+        stage('Automation Result') {
+          steps {
+            echo 'Automation'
+          }
+        }
+
       }
     }
 
-    stage('CI Process Completed') {
+    stage('CI Process End') {
       steps {
         echo 'CI Process Completed'
       }
@@ -62,25 +84,6 @@ set +x
       steps {
         echo 'Done'
         slackSend(teamDomain: 'bestbuy', channel: 'event-detox-test', color: '#49C39E', tokenCredentialId: 'slack-token', notifyCommitters: true, replyBroadcast: true, sendAsText: true, blocks: 'false', attachments: 'na')
-        sh '''#!/usr/bin/env groovy
-
-
-
-
-def call(String buildResult) {
-  if ( buildResult == "SUCCESS" ) {
-    slackSend color: "good", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} was successful"
-  }
-  else if( buildResult == "FAILURE" ) { 
-    slackSend color: "danger", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} was failed"
-  }
-  else if( buildResult == "UNSTABLE" ) { 
-    slackSend color: "warning", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} was unstable"
-  }
-  else {
-    slackSend color: "danger", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} its resulat was unclear"	
-  }
-}'''
       }
     }
 
